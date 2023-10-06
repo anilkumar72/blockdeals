@@ -21,9 +21,9 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
     console.log(`User connected ${socket.id}`);
     // We can write our socket event listeners in here...
-    socket.emit('message', {
-        message: `anil has joined the chat room`,
-    });
+    // socket.emit('message', {
+    //     message: `anil has joined the chat room`,
+    // });
 });
 const port = 3001;
 let corsOptions = {
