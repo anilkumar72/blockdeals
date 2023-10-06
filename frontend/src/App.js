@@ -21,6 +21,7 @@ function App() {
     }, []);
 
     return (<div className="App">
+        hello from front end
             {messages && <p>{JSON.stringify(messages)}</p>}
         </div>);
 }
