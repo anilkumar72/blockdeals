@@ -24,8 +24,8 @@ app.get("/", async (req, res) => {
 });
 app.post('/webhook', (req, res) => {
     // Get the payload from the request.
-    const payload = req.body;
-console.log(req,res,'webhook')
+    // const payload = req.body;
+        console.log(req.body,'webhook')
     // Do something with the payload.
 
     // Respond to the request.
