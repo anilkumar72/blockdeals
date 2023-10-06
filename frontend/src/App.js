@@ -1,33 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {io} from "socket.io-client";
+
+const socket = io.connect('http://localhost:3001');
 
 function App() {
 
-  useEffect(() => {
-    fetch('http://localhost:3001/')
-      .then(response => response.json())
-      .then(data => console.log(data));
-  }, []);
+    const [messages, setMessages] = useState(null);
+    useEffect(() => {
+        // fetch('http://localhost:3001/')
+        //   .then(response => response.json())
+        //   .then(data => console.log(data));
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Listen for messages from the server.
+        socket.on('message', (message) => {
+            setMessages(message)
+            console.log(message, 'messages')
+            // Do something with the message.
+        });
+    }, []);
+
+    return (<div className="App">
+            {messages && <p>{JSON.stringify(messages)}</p>}
+        </div>);
 }
 
 export default App;
