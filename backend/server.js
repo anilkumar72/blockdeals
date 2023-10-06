@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", async (req, res) => {
-  console.log(client)
+
     res.json({message: "Welcome to application."});
 });
 app.post('/webhook', (req, res) => {
