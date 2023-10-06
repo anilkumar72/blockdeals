@@ -1,8 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require('cors');
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const client = require('./src/services/mongooseConnection'); // Import the MongoDB client instance
 
 
 const app = express();
