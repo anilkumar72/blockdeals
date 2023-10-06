@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
 });
 const port = 3001;
 let corsOptions = {
-    origin: ['http://localhost:3000', "52.89.214.238", "34.212.75.30", "54.218.53.128", "52.32.178.7"],
+    origin: ['https://blocktrader.vercel.app/', "52.89.214.238", "34.212.75.30", "54.218.53.128", "52.32.178.7"],
 };
 
 app.use(cors(corsOptions));
