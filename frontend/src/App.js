@@ -6,26 +6,29 @@ const socket = io.connect('https://blocktrader.pro');
 
 function App() {
 
-    const [messages, setMessages] = useState(null);
+    const [messages, setMessages] = useState([]);
     useEffect(() => {
-        // fetch('http://localhost:3001/')
-        //   .then(response => response.json())
-        //   .then(data => console.log(data));
-
-        socket.on('message', (message) => {
-            setMessages(message)
-            console.log(message, 'messages')
-            // Do something with the message.
-        });
+        // socket.on('message', (message) => {
+        //
+        //     console.log(message, 'messages')
+        //     // Do something with the message.
+        // });
         socket.on('webhook', (webhook) => {
+            setMessages((prev) => {
+                return [...prev, webhook]
+            })
             console.log(webhook, 'webhook')
         });
     }, []);
 
     return (<div className="App">
         hello from front end url changes
-            {messages && <p>{JSON.stringify(messages)}</p>}
-        </div>);
+        {messages && messages.length > 0 &&
+            messages.map((item, index) => {
+                    return <p key={index}>{JSON.stringify(item)}</p>
+                }
+            )}
+    </div>);
 }
 
 export default App;
