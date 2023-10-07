@@ -12,11 +12,13 @@ function App() {
         //   .then(response => response.json())
         //   .then(data => console.log(data));
 
-// Listen for messages from the server.
         socket.on('message', (message) => {
             setMessages(message)
             console.log(message, 'messages')
             // Do something with the message.
+        });
+        socket.on('webhook', (webhook) => {
+            console.log(webhook, 'webhook')
         });
     }, []);
 
